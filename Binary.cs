@@ -24,44 +24,20 @@ namespace Binary
 
 				if (int.Parse(number) < 1)
 				{
-					Console.WriteLine("Invalid Input, number should not be less than 0.");
+					Console.WriteLine("Invalid Input, number should not be less than 1.");
 					return false;
 				}
 
 				if (int.Parse(number) > 255)
 				{
-					Console.WriteLine("Invlaid Input, number should not be over 255.");
+					Console.WriteLine("Invalid Input, number should not be over 255.");
 					return false;
 				}
 			}
 			return true;
 		}
 
-		static void ConvertToBinary(string input, int[] x)
-		{
-			string[] numbers = input.Trim().Split(' ');
-			int m, i;
-
-
-			foreach (string number in numbers)
-			{
-				//Console.WriteLine(number +" in Binary is: ");
-				m = int.Parse(number);
-				for (i = 0; i < 8; i++)
-				{
-					x[i] = m % 2;
-					m = m / 2;
-				}
-				/*int num = 128;
-				for (i=i-1; i>=0; i--)
-				{
-					Console.WriteLine(num + " : " + x[i]);
-					num = num/2; 
-				}*/
-			}
-		}
-
-		static string[,] TableFormat(string input)
+		static string[,] ConvertToBinary(string input)
 		{
 			string[] number = input.Split(' ');
 			string[,] matrix = new string[number.Length + 1, 9];
@@ -109,7 +85,7 @@ namespace Binary
 			{
 				number = GetInput();
 			} while (!IsInputValid(number));
-			matrix = TableFormat(number);
+			matrix = ConvertToBinary(number);
 			PrintMatrix(matrix);
 		}
 	}
